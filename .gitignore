@@ -1,0 +1,28 @@
+frontend/node_modules/
+frontend/build/
+npm-debug.log
+
+# Python / venv
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+
+# Env / secrets
+.env
+frontend/.env
+backend/.env
+.env.*.local
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs / DB / builds
+*.log
+*.sqlite
+*.db
+dist/
+build/

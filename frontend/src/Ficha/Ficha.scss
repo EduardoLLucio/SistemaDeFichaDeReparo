@@ -1,0 +1,260 @@
+.fichas-page{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+.inp {
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.inp:focus{
+    outline: 2px solid rgba(37,99,235,0.12);
+    border-color: #2563eb;
+}
+
+.btn {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid #3700ff;
+    background: #5e71dd;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+
+.btn:disabled{
+    opacity: .6;
+    cursor: default;
+}
+
+.btn.ghost{
+    background: #a5a5a5;
+    color: #140353;
+    border-color: #0066ff;
+}
+
+.btn.primary{
+    background: #4cafef;
+    color: white;
+}
+
+.header-actions{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+    gap: 8px;
+
+}
+
+.fichas-toolbar{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+
+
+.error{
+    background: #fde2e1;
+    color: #ff0000;
+    border: 1px solid #915c5c;
+    padding: 8px 12px;
+    border-radius: 8px;
+
+}
+
+
+
+.fichas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+@media (min-width: 1400px){
+    .fichas-grid {
+        grid-template-columns: repeat(4, minmax(260px, 1fr));
+    }
+}
+
+@media (max-width: 1100px){
+    .fichas-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
+
+@media(max-width: 680px){
+    .fichas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.ficha-card{
+    background: #fff;
+    border: 1px solid #e6e8eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.5);
+    padding: 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 120px;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    
+}
+
+.ficha-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.8);
+    border-color: #ffffff;
+}
+
+.ficha-card:focus{
+    outline: 2px solid #0026ff;
+    outline-offset: 2px;
+}
+
+.ficha-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.ficha-top-left{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ficha-actions{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-btn{
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a5a5a5;
+    background: #d1d5db;
+    color:#64748b;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s, box-shadow .15s, border-color .15s, transform .05s;
+    font-size: 14px; line-height: 1; padding: 0;
+}
+
+.icon-btn:hover{
+    background:#d1d5db;
+    border-color: #d1d5db;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.6);
+
+}
+
+.icon-btn:active{
+    transform: translate(1px); 
+}
+
+.ficha-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-top: 4px;
+}
+
+.campo{ 
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+
+}
+
+.label{
+    color:#64748b;
+    font-size:.85rem;
+    flex: 0 0 auto;
+}
+
+.valor{
+    color:#111827;
+    font-weight:600;
+    font-size:.9rem;
+    min-width: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media(max-width: 680px){
+    .ficha-body{
+        grid-template-columns: 1fr;
+    }
+}
+
+.nota{
+    margin-top: 4px;
+    color: #1f2937;
+    font-size: .9rem;
+    line-height: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ficha-foot{
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #64748b;
+    font-size: .8rem;
+    padding-top: 6px;
+    border-top: 1px dashed #e6e8eb;      
+}
+
+
+
+.ficha-id{ 
+    font-weight:800; 
+    color:#1f2937; 
+    letter-spacing:.2px; 
+}
+
+
+.ficha-cliente{
+  font-weight:700;
+  color:#111827;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Meta: data e valor */
+.ficha-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  color:#64748b;
+  font-size:.86rem;
+}
+
+.pill{ padding:.15rem .5rem; border-radius:999px; font-size:.75rem; font-weight:700; }

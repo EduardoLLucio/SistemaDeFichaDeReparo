@@ -1,0 +1,121 @@
+
+$rastreio-bg: #ffffff;
+$rastreio-border: #e6e9ee;
+$rastreio-accent: #2563eb;
+$rastreio-muted: #6b7280;
+$rastreio-error: #ef4444;
+
+.rastreio {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 18px;
+  background: $rastreio-bg;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 1.25rem;
+    color: #0f172a;
+  }
+
+  .rastreio-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  input[type="text"],
+  input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid $rastreio-border;
+    border-radius: 8px;
+    font-size: .95rem;
+    color: #0f172a;
+    background: #fff;
+    box-sizing: border-box;
+    outline: none;
+
+    &:focus {
+      border-color: rgba($rastreio-accent, 0.9);
+      box-shadow: 0 0 0 4px rgba($rastreio-accent, 0.08);
+    }
+  }
+
+  button {
+    padding: 9px 14px;
+    border-radius: 8px;
+    border: none;
+    background: $rastreio-accent;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .07s ease, box-shadow .12s ease;
+
+    &:hover { transform: translateY(-1px); }
+    &:active { transform: translateY(0); }
+    &:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none;}
+
+    &.secondary {
+      background: #fff;
+      color: #111827;
+      border: 1px solid $rastreio-border;
+    }
+
+    &.primary {
+      background: $rastreio-accent;
+      color: #fff;
+      border: 1px solid darken($rastreio-accent, 6%);
+
+    }
+
+    &:focus {
+      outline: 3px solid rgba($rastreio-accent, 0.12);
+      outline-offset: 2px;
+      }
+    }
+
+  .error {
+    color: $rastreio-error;
+    margin-top: 6px;
+    font-size: .95rem;
+  }
+
+  .result {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fbfdff;
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 6px 18px rgba(15,23,42,0.02);
+
+    > div {
+      margin-bottom: 8px;
+      font-size: .95rem;
+
+      strong { color: #111827; display: inline-block; min-width: 160px; }
+    }
+
+    .small {
+      color: $rastreio-muted;
+      font-size: .88rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 12px;
+
+    .rastreio-row { flex-direction: column; align-items: stretch; }
+    .result > div strong { min-width: 120px; display: block; margin-bottom: 4px; }
+  }
+}

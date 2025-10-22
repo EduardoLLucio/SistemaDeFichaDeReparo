@@ -1,0 +1,100 @@
+<!-- ...existing code... -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ficha {{ ficha.id }}</title>
+  <style>
+    @page { size: A4; margin: 8mm; }
+    body { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color:#111; margin:0; }
+    .container { width: 100%; box-sizing: border-box; }
+    .sheet { display: flex; gap: 12px; align-items: stretch; }
+    .copy { flex:1; border: 1px solid #ddd; padding: 16px; box-sizing:border-box; min-height: 260px; }
+    .cut { width: 8px; display:flex; align-items:center; justify-content:center; }
+    .cut:after { content: ''; width:1px; height:100%; border-right:2px dashed #bbb; display:block; }
+    h1 { font-size: 16px; margin: 0 0 8px 0; }
+    .code { font-size: 18px; font-weight:800; margin:6px 0 10px 0; letter-spacing:1px; }
+    .small { font-size: 11px; color:#555; }
+    .row { display:flex; gap:8px; margin-bottom:6px; align-items:flex-start; }
+    .label { width:120px; color:#444; font-weight:600; font-size:12px; }
+    .valor { flex:1; font-weight:500; }
+    .meta { display:flex; justify-content:space-between; gap:12px; margin-top:10px; align-items:center; }
+    .qr { width:120px; text-align:center; }
+    .qr img { width:100px; height:100px; display:block; margin:0 auto; }
+    .footer { margin-top: 12px; font-size:11px; color:#444; border-top:1px solid #eee; padding-top:8px; }
+    .two-cols { display:flex; gap:12px; align-items:flex-start; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sheet">
+      <div class="copy">
+        <h1>Ficha - Cliente</h1>
+        <div class="code">Código: {{ ficha.codigo_rastreio }}</div>
+
+        <div class="row"><div class="label">Nome</div><div class="valor">{{ cliente.nome }}</div></div>
+        <div class="row"><div class="label">Telefone</div><div class="valor">{{ cliente.telefone or '-' }}</div></div>
+        <div class="row"><div class="label">Endereço</div><div class="valor">{{ cliente.endereco or '-' }} {{ cliente.numero or '' }} {{ cliente.bairro or '' }}</div></div>
+
+        <hr />
+
+        <div class="two-cols">
+          <div style="flex:1">
+            <div class="row"><div class="label">Categoria</div><div class="valor">{{ ficha.categoria or '-' }}</div></div>
+            <div class="row"><div class="label">Marca</div><div class="valor">{{ ficha.marca or '-' }}</div></div>
+            <div class="row"><div class="label">Modelo</div><div class="valor">{{ ficha.modelo or '-' }}</div></div>
+            <div class="row"><div class="label">Serial</div><div class="valor">{{ ficha.serial or '-' }}</div></div>
+            <div class="row"><div class="label">Defeito</div><div class="valor">{{ ficha.defeito or ficha.descricao or '-' }}</div></div>
+            <div class="row"><div class="label">Acessórios</div><div class="valor">{{ ficha.acessorios or '-' }}</div></div>
+          </div>
+          <div class="qr">
+            {% if ficha.qr_data_uri %}
+              <img src="{{ ficha.qr_data_uri }}" alt="QR Código Rastreio" />
+              <div class="small">Escaneie para ver rastreio</div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="footer small">
+          Imprimir e entregar ao cliente. Consulte em: {{ base_url }}/rastreio/{{ ficha.codigo_rastreio }}
+        </div>
+      </div>
+
+      <div class="cut" aria-hidden="true"></div>
+
+      <div class="copy">
+        <h1>Ficha - Admin</h1>
+        <div class="code">Código: {{ ficha.codigo_rastreio }}</div>
+
+        <div class="row"><div class="label">Nome</div><div class="valor">{{ cliente.nome }}</div></div>
+        <div class="row"><div class="label">Telefone</div><div class="valor">{{ cliente.telefone or '-' }}</div></div>
+        <div class="row"><div class="label">Endereço</div><div class="valor">{{ cliente.endereco or '-' }} {{ cliente.numero or '' }} {{ cliente.bairro or '' }}</div></div>
+
+        <hr />
+
+        <div class="two-cols">
+          <div style="flex:1">
+            <div class="row"><div class="label">Categoria</div><div class="valor">{{ ficha.categoria or '-' }}</div></div>
+            <div class="row"><div class="label">Marca</div><div class="valor">{{ ficha.marca or '-' }}</div></div>
+            <div class="row"><div class="label">Modelo</div><div class="valor">{{ ficha.modelo or '-' }}</div></div>
+            <div class="row"><div class="label">Serial</div><div class="valor">{{ ficha.serial or '-' }}</div></div>
+            <div class="row"><div class="label">Defeito</div><div class="valor">{{ ficha.defeito or ficha.descricao or '-' }}</div></div>
+            <div class="row"><div class="label">Acessórios</div><div class="valor">{{ ficha.acessorios or '-' }}</div></div>
+          </div>
+          <div class="qr">
+            {% if ficha.qr_data_uri %}
+              <img src="{{ ficha.qr_data_uri }}" alt="QR Código Rastreio" />
+              <div class="small">Escaneie para ver rastreio</div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="footer small">
+          Imprimir e entregar ao cliente. Consulte em: {{ base_url }}/rastreio/{{ ficha.codigo_rastreio }}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
