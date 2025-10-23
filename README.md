@@ -1,11 +1,4 @@
-# SistemaDeFicha — Demo pública
-
-Este repositório contém uma versão do SistemaDeFicha. Abaixo estão duas contas de demonstração públicas para que visitantes possam testar a aplicação em ambiente online.
-
-## Contas demo (públicas)
-
-- Email: `admin@demo.com`
-	Senha: `Admin12345`
+SistemaDeFichaDeReparo é uma aplicação web para registrar, rastrear e gerenciar fichas de reparo (clientes, logs e geração de PDF). Backend em FastAPI + SQLAlchemy (Postgres) e frontend em React. Contém .env.example e instruções para rodar localmente; contas demo disponíveis para avaliação.
 
 # SistemaDeFicha — Demo pública
 
@@ -13,10 +6,10 @@ Este repositório contém uma versão do SistemaDeFicha. Abaixo estão duas cont
 
 ## Contas demo (públicas)
 
-- Email: `admin@demo.com`
+- Email: `admin@admin.com`
   Senha: `Admin12345`
 
-- Email: `user@demo.com`
+- Email: `admin2@admin2.com`
   Senha: `Admin123456`
 
 **AVISO IMPORTANTE**
@@ -61,9 +54,27 @@ npm install
 npm start
 ```
 
+
 ## Screenshots
 
- Algumas capturas de tela do projeto (as imagens estão na pasta `FotosDoProjeto/` na raiz do repositório).
+ Algumas capturas de tela do projeto (as imagens estão na pasta `FotosDoProjeto/` na 
+ raiz do repositório).
+
+
+
+## Requisitos
+
+O projeto usa Redis. Para executar localmente, inicie o Redis com Docker:
+
+```bash
+docker run -d --name redis -p 6379:6379 redis:7-alpine
+```
+
+Alternativa (docker-compose):
+```bash
+docker-compose up -d redis
+```
+
 
 
 # Autor
