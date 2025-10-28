@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sistema-ficha
+    env: python
+    plan: free
+    buildCommand: |
+      apt-get update && apt-get install -y wkhtmltopdf
+      pip install --no-cache-dir -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: APP_ENV
+        value: production
