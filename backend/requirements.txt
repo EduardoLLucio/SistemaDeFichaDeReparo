@@ -6,7 +6,7 @@ psycopg2-binary
 python-dotenv
 passlib[bcrypt]
 python-jose[cryptography]
-pydantic
+pydantic==2.3.0
 fastapi-mail
 jinja2
 pdfkit
