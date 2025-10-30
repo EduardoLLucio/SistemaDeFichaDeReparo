@@ -30,6 +30,10 @@ const router = createBrowserRouter([
     path: '/rastreio',
     element: <Rastreio />
   },
+  {
+    path: '/rastreio/:codigo',
+    element: <Rastreio />
+  },
 ]);
 
 function App() {
