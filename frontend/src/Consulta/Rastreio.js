@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import api from '../services/api';
 import './Rastreio.scss';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
 export default function Rastreio() {
   const [codigo, setCodigo] = useState('');
@@ -11,8 +10,10 @@ export default function Rastreio() {
   const [loading, setLoading] = useState(false);
   const params = useParams();
 
-  const buscar = async (event) => {
-    if (eventOrCode && typeof eventOrCode.preventDefault === 'function') eventOrCode.preventDefault();
+  const buscar = useCallback(async (eventOrCode) => {
+    if (eventOrCode && typeof eventOrCode.preventDefault === 'function')  {
+      eventOrCode.preventDefault();
+    }
 
     const q = (typeof eventOrCode === 'string' ? eventOrCode : codigo || '').trim();
     if (!q) { setErr('Informe o código'); setData(null); return; }
@@ -30,7 +31,7 @@ export default function Rastreio() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [codigo]);
 
   useEffect(() => {
     const p = params?.codigo;
@@ -38,7 +39,7 @@ export default function Rastreio() {
       setCodigo(p);
       buscar(p);
     }
-  }, [params?.codigo]);
+  }, [params?.codigo, buscar]);
 
   return (
     <div className="rastreio">
